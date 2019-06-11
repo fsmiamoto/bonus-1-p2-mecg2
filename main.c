@@ -1,3 +1,10 @@
+/* 
+ * Bonus 1 - P2
+ * Mecanica Geral 2 - Prof. Wilson
+ * Alunos: Francisco Shigueo Miamoto
+ *         Joao Pedro Zanlorensi Cardoso
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -7,10 +14,10 @@ typedef struct {
 } Vetor;
 
 // Valores da figura (mm).
-double a = 200, b = 250, c = 150, d = 400;
+double a, b, c, d;
 
 // Velocidade angular (rad/s)
-double w = 9;
+double w;
 
 // Resultados esperados
 Vetor Velocidade, Aceleracao;
@@ -29,11 +36,12 @@ int main(){
     entradaValores();
     calculaVelocidadeAceleracao();
     apresentaResultado();
+	return 0;
 }
 
 
 double moduloDoVetor(Vetor A){
-    return sqrt( pow(A.x,2.0) + pow(A.y,2.0) + pow(A.z,2.0));
+    return sqrt(pow(A.x,2.0) + pow(A.y,2.0) + pow(A.z,2.0));
 }
 
 Vetor produtoVetorial(Vetor A, Vetor B){
@@ -63,21 +71,15 @@ Vetor subtraiVetor(Vetor A, Vetor B){
 void entradaValores(){
     printf("Insira os valores do problema: \n\n");
     printf("a (mm) = ");
-    scanf("%.2f", &a);
-    fflush(stdin);
-
+    scanf("%lf", &a);
     printf("b (mm) = ");
-    scanf("%.2f", &b);
-    fflush(stdin);
+    scanf("%lf", &b);
     printf("c (mm) = ");
-    scanf("%.2f", &c);
-    fflush(stdin);
+    scanf("%lf", &c);
     printf("d (mm) = ");
-    scanf("%.2f", &d);
-    fflush(stdin);
+    scanf("%lf", &d);
     printf("w (rad/s) = ");
-    scanf("%.2f", &w);
-    fflush(stdin);
+    scanf("%lf", &w);
 }
 
 void calculaVelocidadeAceleracao() {
@@ -99,9 +101,10 @@ void calculaVelocidadeAceleracao() {
 }
 
 void apresentaResultado(){
-    printf("Resultado Final: \n\n");
-    printf("Velocidade: %.2fi + %.2fj + %.2fk [mm/s]\n", Velocidade.x, Velocidade.y, Velocidade.z);        
+    printf("\nResultado Final: \n\n");
+    printf("Velocidade em G: %.2fi + %.2fj + %.2fk [mm/s]\n", Velocidade.x, Velocidade.y, Velocidade.z);        
     printf("Modulo: %.2f [mm/s]\n\n",moduloDoVetor(Velocidade));
-    printf("Aceleracao: %.2fi + %.2fj + %.2fk [mm/s²]\n", Aceleracao.x, Aceleracao.y, Aceleracao.z);        
-    printf("Modulo: %.2f [mm/s²]\n\n", moduloDoVetor(Aceleracao));
+    printf("Aceleracao em G: %.2fi + %.2fj + %.2fk [mm/s^2]\n", Aceleracao.x, Aceleracao.y, Aceleracao.z);        
+    printf("Modulo: %.2f [mm/s^2]\n\n", moduloDoVetor(Aceleracao));
+	system("pause");
 }
